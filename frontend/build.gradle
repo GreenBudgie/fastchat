@@ -1,0 +1,29 @@
+buildscript {
+    repositories {
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
+    }
+    dependencies {
+        classpath "com.github.node-gradle:gradle-node-plugin:3.1.1"
+    }
+}
+
+apply plugin: "com.github.node-gradle.node"
+
+node {
+    download = false
+}
+
+task npmBuild(type: NpmTask) {
+    dependsOn 'npmInstall'
+    dependsOn 'clean'
+
+    args = ['run', 'build']
+}
+
+task clean() {
+    doFirst {
+        delete 'build/dist'
+    }
+}

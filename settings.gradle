@@ -1,0 +1,3 @@
+rootProject.name = 'fastchat'
+include 'backend'
+include 'frontend'
