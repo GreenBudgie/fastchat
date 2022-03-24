@@ -1,26 +1,31 @@
 <template>
-  <HelloWorld msg="Say Hello from Backend!" />
+  <Container/>
 </template>
 
 <script lang="ts">
 import { Options, Vue } from "vue-class-component";
-import HelloWorld from "./components/HelloWorld.vue";
+import Container from "@/components/Container.vue";
 
 @Options({
   components: {
-    HelloWorld,
+    Container
   },
 })
 export default class App extends Vue {}
 </script>
 
 <style>
+* {
+  padding: 0;
+  margin: 0;
+}
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  margin-top: 40px;
 }
 </style>
