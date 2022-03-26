@@ -1,17 +1,11 @@
 <template>
-  <Container/>
+  <MessageInput/>
+  <MessageContainer/>
 </template>
 
-<script lang="ts">
-import { Options, Vue } from "vue-class-component";
-import Container from "@/components/Container.vue";
-
-@Options({
-  components: {
-    Container
-  },
-})
-export default class App extends Vue {}
+<script lang="ts" setup>
+import MessageInput from "@/components/MessageInput.vue";
+import MessageContainer from "@/components/MessageContainer.vue";
 </script>
 
 <style>

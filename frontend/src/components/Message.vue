@@ -1,21 +1,16 @@
 <template>
-  <div>{{ text }}</div>
+  <div>{{ props.text }}</div>
 </template>
 
-<script lang="ts">
-import { Options, Vue } from "vue-class-component";
+<script lang="ts" setup>
 
-@Options({
-  props: {
-    text: String
+  export interface IMessage {
+    id: number;
+    text: string;
   }
-})
 
-export default class Message extends Vue {
-  text = "WOW";
+  const props = defineProps<IMessage>();
 
-
-}
 </script>
 
 <style scoped>
