@@ -3,14 +3,7 @@
 </template>
 
 <script lang="ts" setup>
-
-  export interface IMessage {
-    id: number;
-    text: string;
-  }
-
-  const props = defineProps<IMessage>();
-
+  const props = defineProps<{id: number, text: string}>();
 </script>
 
 <style scoped>

@@ -3,17 +3,20 @@
 </template>
 
 <script lang="ts" setup>
+  import {store} from "@/store";
+
   function onInputKeyPress(event: KeyboardEvent): void {
     if(event.key == "Enter") {
-      const input: HTMLInputElement = event.target as HTMLInputElement;
+      const input = event.target as HTMLInputElement;
       const inputValue = input.value.trim();
       if(inputValue.length > 0) addMessage(inputValue);
     }
   }
 
   function addMessage(text: string) {
-
+    store.commit("addMessage", text);
   }
+
 </script>
 
 <style scoped>

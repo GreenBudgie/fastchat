@@ -1,19 +1,17 @@
 <template>
   <div>
     <div v-for="message in messages" :key="message.id">
-
+      <Message :id="message.id" :text="message.text"/>
     </div>
   </div>
 </template>
 
 <script lang="ts" setup>
-  import {IMessage} from "@/components/Message.vue";
-  import {reactive} from "vue";
+  import Message from "@/components/Message.vue";
+  import {computed} from "vue";
+  import {IMessage, store} from "@/store";
 
-  const messages: IMessage[] = reactive([
-    {id: 1, text: "Message #1"},
-    {id: 2, text: "Message #2"}
-  ]);
+  const messages = computed<IMessage[]>(() => store.state.messages);
 
 </script>
 
