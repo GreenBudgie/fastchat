@@ -1,14 +1,11 @@
-package com.fastchat.models;
+package com.fastchat.message;
 
-import com.fastchat.repo.MessageRepository;
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.RequiredArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Data
-@Document
+@Document("messages")
 public class Message {
 
     @Id
