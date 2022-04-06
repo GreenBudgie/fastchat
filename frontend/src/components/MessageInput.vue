@@ -4,6 +4,7 @@
 
 <script lang="ts" setup>
   import {store} from "@/store";
+  import {sendMessage} from "@/util/socket";
 
   function onInputKeyPress(event: KeyboardEvent): void {
     if(event.key == "Enter") {
@@ -14,7 +15,8 @@
   }
 
   function addMessage(text: string) {
-    store.commit("addMessage", text);
+    sendMessage(text);
+    //store.commit("addMessage", text);
   }
 
 </script>

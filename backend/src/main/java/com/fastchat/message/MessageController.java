@@ -1,6 +1,8 @@
 package com.fastchat.message;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.messaging.handler.annotation.MessageMapping;
+import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -26,9 +28,10 @@ public class MessageController {
         return messageService.getMessages();
     }
 
-    @GetMapping("test")
-    public String getFirstMessageText() {
-        return messageService.getTextFromFirstMessage();
+    @MessageMapping("/receiveMessage")
+    @SendTo("/topic/messages")
+    public String listenAndSendMessage(String text) {
+        return text;
     }
 
 }
