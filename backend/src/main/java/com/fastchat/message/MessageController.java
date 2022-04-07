@@ -19,8 +19,8 @@ public class MessageController {
     }
 
     @PostMapping()
-    public void addMessage(@RequestBody String text) {
-        messageService.addMessage(text);
+    public void addMessage(@RequestBody Message message) {
+        messageService.addMessage(message);
     }
 
     @GetMapping()

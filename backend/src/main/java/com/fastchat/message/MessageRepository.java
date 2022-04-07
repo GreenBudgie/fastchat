@@ -1,7 +1,7 @@
 package com.fastchat.message;
 
-import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface MessageRepository extends MongoRepository<Message, String> {
+public interface MessageRepository extends JpaRepository<Message, String> {
 
 }
