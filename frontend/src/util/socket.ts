@@ -1,31 +1,36 @@
 import SockJS from "sockjs-client";
-import {CompatClient, IMessage, Stomp} from "@stomp/stompjs";
+import {Client, IFrame, IMessage} from "@stomp/stompjs";
 import {store} from "@/store";
 
-let stompClient: CompatClient | null = null;
+let stompClient: Client | null = null;
 
 export function connect() {
-    const socket = new SockJS('/socket-connection');
-    stompClient = Stomp.over(socket);
-    stompClient.connect({}, (frame: any) => {
-        console.log('Connected: ' + frame);
+    stompClient = new Client({
+        webSocketFactory: () => new SockJS('/socket-connection')
+    });
+
+    stompClient.onConnect = (receipt: IFrame) => {
 
         stompClient!.subscribe('/topic/messages', (message: IMessage) => {
             receiveMessage(message);
         });
 
-    });
+    };
+
+    stompClient.activate();
 }
 
 export function disconnect() {
     if(stompClient !== null) {
-        stompClient.disconnect();
+        stompClient.deactivate();
     }
-    console.log("Disconnected");
 }
 
 export function sendMessage(message: string) {
-    stompClient!.send("/socket/receiveMessage", {}, message);
+    stompClient!.publish({
+        destination: "/socket/receiveMessage",
+        body: message
+    });
 }
 
 function receiveMessage(message: IMessage) {
