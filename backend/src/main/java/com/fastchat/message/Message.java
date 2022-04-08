@@ -5,7 +5,7 @@ import lombok.*;
 import org.hibernate.Hibernate;
 
 import javax.persistence.*;
-import java.sql.Date;
+import java.util.Date;
 import java.util.Objects;
 
 @Getter
@@ -32,6 +32,14 @@ public class Message {
         this.author = author;
         this.text = text;
         this.dateCreated = dateCreated;
+    }
+
+    public Message(User author, String text) {
+        this(author, text, new Date());
+    }
+
+    public Message(String text) {
+        this(null, text);
     }
 
     @Override
