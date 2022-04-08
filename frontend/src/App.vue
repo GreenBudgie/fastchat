@@ -1,11 +1,9 @@
 <template>
-  <MessageInput/>
-  <MessageContainer/>
+  <router-view></router-view>
 </template>
 
 <script lang="ts" setup>
-import MessageInput from "@/components/MessageInput.vue";
-import MessageContainer from "@/components/MessageContainer.vue";
+
 </script>
 
 <style>

@@ -1,10 +1,12 @@
 import { createApp } from "vue";
 import App from "./App.vue";
 import { store } from "@/store";
-import {connect, disconnect} from "@/util/socket";
+import { socketConnect } from "@/util/socket";
+import { router } from "@/router";
 
-connect();
+socketConnect();
 
 const app = createApp(App);
 app.use(store);
+app.use(router);
 app.mount("#app");

@@ -7,7 +7,7 @@
 </template>
 
 <script lang="ts" setup>
-  import Message from "@/components/Message.vue";
+  import Message from "@/components/main/Message.vue";
   import {computed} from "vue";
   import {IMessage, store} from "@/store";
 

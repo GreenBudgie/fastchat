@@ -3,8 +3,9 @@ import {Client, IFrame, IMessage} from "@stomp/stompjs";
 import {store} from "@/store";
 
 let stompClient: Client | null = null;
+let closeSocketConnectionOnError = false;
 
-export function connect() {
+export function socketConnect() {
     stompClient = new Client({
         webSocketFactory: () => new SockJS('/socket-connection')
     });
@@ -20,7 +21,7 @@ export function connect() {
     stompClient.activate();
 }
 
-export function disconnect() {
+export function socketDisconnect() {
     if(stompClient !== null) {
         stompClient.deactivate();
     }
