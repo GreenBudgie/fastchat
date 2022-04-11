@@ -23,14 +23,6 @@ dependencies {
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
-processResources {
-	from ('../frontend/dist/') {
-		into 'static'
-	}
-}
-
-processResources.dependsOn ':frontend:npmBuild'
-
 tasks.named('test') {
 	useJUnitPlatform()
 }

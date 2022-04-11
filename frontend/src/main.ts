@@ -4,7 +4,7 @@ import { store } from "@/store";
 import { socketConnect } from "@/util/socket";
 import { router } from "@/router";
 
-socketConnect();
+//socketConnect();
 
 const app = createApp(App);
 app.use(store);
