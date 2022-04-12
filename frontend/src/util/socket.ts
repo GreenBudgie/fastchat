@@ -3,7 +3,6 @@ import {Client, IFrame, IMessage} from "@stomp/stompjs";
 import {store} from "@/store";
 
 let stompClient: Client | null = null;
-let closeSocketConnectionOnError = false;
 
 export function socketConnect() {
     stompClient = new Client({
@@ -22,9 +21,7 @@ export function socketConnect() {
 }
 
 export function socketDisconnect() {
-    if(stompClient !== null) {
-        stompClient.deactivate();
-    }
+    stompClient?.deactivate();
 }
 
 export function sendMessage(message: string) {
