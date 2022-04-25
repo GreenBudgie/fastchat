@@ -28,9 +28,9 @@ public class MessageController {
         return messageService.getMessages();
     }
 
-    @MessageMapping("/receiveMessage")
-    @SendTo("/topic/messages")
-    public String listenAndSendMessage(String text) {
+    @MessageMapping("/messages")
+    @SendTo("/api/socket/topic/messages")
+    public String receiveAndBroadcastMessage(String text) {
         return text;
     }
 
